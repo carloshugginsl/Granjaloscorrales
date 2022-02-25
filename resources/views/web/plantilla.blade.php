@@ -9,6 +9,11 @@
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link href="web/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="web/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="web/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url('web/css/open-iconic-bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url('web/css/animate.css') }}">
     

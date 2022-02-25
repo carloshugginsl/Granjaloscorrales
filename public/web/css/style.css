@@ -8573,7 +8573,7 @@ h1, h2, h3, h4, h5,
   .img-2 .icon {
     width: 100px;
     height: 100px;
-    background: #82ae46;
+    background: black;
     -webkit-animation: pulse 2s infinite;
     animation: pulse 2s infinite;
     -webkit-border-radius: 50%;
@@ -10051,6 +10051,17 @@ textarea.form-control {
       padding: 6em 0;
       position: relative; }
     
+    .icon img{
+      height: 300px;
+    }
+
+    .icon i{
+      font-size: 30px;
+    }
     
+    .icon h1{
+      font-size: 20px;
+
+    }
     
     

@@ -48,8 +48,9 @@
             		<span class="flaticon-shipped"></span>
               </div>
               <div class="media-body">
-                <h3 class="heading">Delivery gratis</h3>
-                <span>En pedidos superiores $5000*</span>
+                <h3 class="heading">Delivery</h3>
+                <span>En pedidos superiores $5000*<br>
+			    Consultanos las zonas	</span>
               </div>
             </div>      
           </div>
