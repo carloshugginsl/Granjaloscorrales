@@ -49,7 +49,7 @@
               <div class="icon mr-2 d-flex justify-content-center align-items">
 
               </div>
-              <a href="/registro">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text">Registrate&nbsp;|</span></a>&nbsp;<a href="/login"><span class="text">Iniciar sesión</span></a>
+              @if(Session::get("idCliente") !="") <a href="/logout">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text">Cerrar sesión&nbsp;|</span></a>&nbsp;<a href="/cambiar-clave"><span class="text">Cambiar clave</span></a>@else&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/login"><span class="text">Iniciar sesión</span></a>@endif
                 
 					    </div>
 				    </div>
@@ -71,8 +71,11 @@
 	          <li class="nav-item active"><a href="/" class="nav-link">Inicio</a></li>
             <li class="nav-item"><a href="/producto" class="nav-link">Productos</a></li>
 	          <li class="nav-item"><a href="/nosotros" class="nav-link">Nosotros</a></li>
-	          <li class="nav-item"><a href="/contacto" class="nav-link">Contacto</a></li>
-	          <li class="nav-item cta cta-colored"><a href="/carrito" class="nav-link"><span class="icon-shopping_cart"></span>[]</a></li>
+            @if(Session::get("idCliente") !="")
+	          <li class="nav-item"><a href="/mi-cuenta" class="nav-link">Mi perfil</a></li>
+            @endif
+
+	          <li class="nav-item cta cta-colored"><a href="/carrito" class="nav-link"><span class="icon-shopping_cart"></span></a></li>
 
 	        </ul>
 	      </div>
