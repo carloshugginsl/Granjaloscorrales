@@ -13,32 +13,33 @@
 <div class="container">
         <div class="row justify-content-center">
           <div class="col-xl-7 ftco-animate">
-						<form action="#" class="billing-form">
+						<form method="POST" class="billing-form">
+						<input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
 							<h3 class="mb-4 billing-heading">Datos Personales</h3>
 	          	<div class="row align-items-end">
 	          		<div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="firstname">Nombre</label>
-	                  <input type="text" class="form-control" placeholder="">
+	                  <input type="text" name="txtNombre" class="form-control" id="nombre" placeholder="">
 	                </div>
 	              </div>
 	              <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="lastname">Apellido</label>
-	                  <input type="text" class="form-control" placeholder="">
+	                  <input type="text" name="txtApellido" class="form-control" id="apellido" placeholder="">
 	                </div>
                 </div>
                         <div class="w-100"></div>
 		            <div class="col-md-6">
 		            	<div class="form-group">
 	                	<label for="streetaddress">Teléfono</label>
-	                  <input type="text" class="form-control" placeholder="">
+	                  <input type="text" name=txtTelefono class="form-control" placeholder="">
 	                </div>
 		            </div>
                         <div class="col-md-6">
 		            	<div class="form-group">
 					<label for="streetaddress">Correo eléctronico</label>
-	                  <input type="text" class="form-control" placeholder="">
+	                  <input type="text" name="txtCorreo" class="form-control" placeholder="">
 	                </div>
 		            </div>
                 <div class="w-100"></div>
@@ -46,7 +47,7 @@
 		            	<div class="form-group">
 		            		<label for="country">Dirección</label>
 		            		<div class="select-wrap">
-					<input type="text" class="form-control">
+					<input type="text" name="txtDomicilio" class="form-control">
 		                  </select>
 		                </div>
 		            	</div>
@@ -55,13 +56,11 @@
 		            <div class="col-md-6">
 		            	<div class="form-group">
 	                	<label for="streetaddress">Contraseña</label>
-	                  <input type="text" class="form-control" placeholder="">
+	                  <input type="password" name="txtClave" class="form-control" placeholder="">
 	                </div>
 		            </div>
 		            <div class="col-md-6">
 		            	<div class="form-group">
-					<label for="streetaddress">Repetir contraseña</label>
-	                  <input type="text" class="form-control" placeholder="">
 	                </div>
 		            </div>
 				*Las contraseñas son sensibles a mayúsculas y minúsculas y deberán tener entre 6 - 20 caracteres.
@@ -71,7 +70,7 @@
 		            <div class="col-md-6">
 		            	<div class="form-group">
 	                </div>
-			    <p><a href="#"class="btn btn-primary py-3 px-4">Registrarse</a></p>
+			    <button type="submit" class="btn btn-primary py-3 px-4">Registrarse</button>
 			    
 		            </div>
 

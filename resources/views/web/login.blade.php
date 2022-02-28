@@ -14,6 +14,8 @@
 						<form action="#" class="billing-form">
 	          	<div class="row align-items-end">
 	          		<div class="col-md-12">
+                <form method="POST">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
 	                <div class="form-group">
 	                	<label for="firstname">Correo</label>
 	                  <input type="text" class="form-control" placeholder="">
@@ -22,10 +24,11 @@
 	              <div class="col-md-12">
 	                <div class="form-group">
 	                	<label for="lastname">Contraseña</label>
-	                  <input type="text" class="form-control" placeholder="">
+	                  <input type="password" class="form-control" placeholder="">
 	                </div>
                 </div>
-                  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"class="btn btn-primary py-3 px-4 centr">Ingresar</a></p>
+                </form>
+                  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" class="btn btn-primary py-3 px-4 centr">Ingresar</button></p>
                   <p></p>
                   <p></p>
                   <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;¿No ténes cuenta? <a href="/registro">Registrate acá </a></h2>

@@ -17,19 +17,20 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-xl-7 ftco-animate">
-						<form action="#" class="billing-form">
+					<form method="POST" class="billing-form">
+                			<input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
 							<h3 class="mb-4 billing-heading">Datos Personales</h3>
 	          	<div class="row align-items-end">
 	          		<div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="firstname">Nombre</label>
-	                  <input type="text" class="form-control" placeholder="">
+	                  <input type="text" class="form-control" placeholder="{{$entidad->nombre}}">
 	                </div>
 	              </div>
 	              <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="lastname">Apellido</label>
-	                  <input type="text" class="form-control" placeholder="">
+	                  <input type="text" class="form-control" placeholder="{{$entidad->apellido}}">
 	                </div>
                 </div>
                 <div class="w-100"></div>
@@ -37,7 +38,7 @@
 		            	<div class="form-group">
 		            		<label for="country">Dirección</label>
 		            		<div class="select-wrap">
-					<input type="text" class="form-control">
+					<input type="text" class="form-control" placeholder="{{$entidad->domicilio}}">
 		                  </select>
 		                </div>
 		            	</div>
@@ -46,25 +47,26 @@
 		            <div class="col-md-6">
 		            	<div class="form-group">
 	                	<label for="streetaddress">Teléfono</label>
-	                  <input type="text" class="form-control" placeholder="">
+	                  <input type="text" class="form-control" placeholder="{{$entidad->telefono}}">
 	                </div>
 		            </div>
 		            <div class="col-md-6">
 		            	<div class="form-group">
 					<label for="streetaddress">Correo eléctronico</label>
-	                  <input type="text" class="form-control" placeholder="">
+	                  <input type="text" class="form-control" placeholder="{{$entidad->correo}}">
 	                </div>
 		            </div>
-				*Para nosotros es importante que verifiques tus datos personales no olvides corregirlos y/o actualizarlos en caso de ser necesario. 
+				*Para nosotros es importante que verifiques tus datos personales, no olvides corregirlos y/o actualizarlos en caso de ser necesario. 
 
 
 		            <div class="w-100"></div>
 		            <div class="col-md-6">
 		            	<div class="form-group">
 	                </div>
-			    <p><a href="#"class="btn btn-primary py-3 px-4">Actualizar datos</a></p>
+			    <p><button type="submit" class="btn btn-primary py-3 px-4">Actualizar datos</a></p>
 			    
 		            </div>
+				</form>
 
 
 
@@ -87,24 +89,29 @@
 	          <div class="row mt-5 pt-3">
 	          	<div class="col-md-12 d-flex mb-5">
 	          		<div class="cart-detail cart-total p-3 p-md-4">
+				    
 	          			<h3 class="billing-heading mb-4">Pedido Actual</h3>
 	          			<p class="d-flex">
+					    @if(!empty($aPedido))
+                                      @foreach($aPedido as $item)
 		    						<span>Número de pedido</span>
-		    						<span>$20.60</span>
+		    						<span>{{$item->idpedido}}</span>
 		    					</p>
 		    					<p class="d-flex">
 		    						<span>Fecha</span>
-		    						<span>$0.00</span>
+		    						<span>{{$item->fecha}}</span>
 		    					</p>
 		    					<p class="d-flex">
 		    						<span>Estado del Pedido</span>
-		    						<span>$3.00</span>
+		    						<span>{{$item->estado}}</span>
 		    					</p>
 		    					<hr>
 		    					<p class="d-flex total-price">
 		    						<span>Total</span>
-		    						<span>$17.60</span>
+		    						<span>${{$item->total}}</span>
 		    					</p>
+							    @endforeach
+                                    @endif
 								</div>
 	          	</div>
 	         

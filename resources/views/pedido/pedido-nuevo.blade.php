@@ -122,6 +122,7 @@ if (isset($msg)) {
                   <div class="wrapper">
                               <table class="table table-hover border">
                                     <tr>
+                                          <th>Imagen</th>
                                           <th>Cantidad</th>
                                           <th>Unidad de medidad</th>
                                           <th>Subtotal</th>
@@ -133,6 +134,7 @@ if (isset($msg)) {
                                     @if(!empty($detalle_pedido))
                                           @foreach($detalle_pedido as $item)
                                                 <tr>
+                                                      <td>{{$item->imagen}}</td>
                                                       <td>{{$item->cantidad}}</td>
                                                       <td>{{$item->subtotal}}</td>
                                                       <td>{{$item->nombre_producto}}</td>

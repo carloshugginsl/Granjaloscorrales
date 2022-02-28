@@ -56,7 +56,8 @@
 	          		<p style="color: #000;">Precio x {{$aProductos[0]->unidad}}</p>
 	          	</div>
           	</div>
-          	<p><a href="cart.html" class="btn btn-black py-3 px-5">Agregar al carrito</a></p>
+		    <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
+          	<p><a type= submit class="btn btn-black py-3 px-5">Agregar al carrito</a></p>
     			</div>
     		</div>
     	</div>

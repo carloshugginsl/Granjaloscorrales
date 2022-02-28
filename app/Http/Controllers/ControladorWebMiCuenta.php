@@ -13,9 +13,29 @@ class ControladorWebMiCuenta extends Controller
 {
     public function index()
     {
-        
-        return view("web.mi-cuenta");
+        $entidad = new Cliente();
+        $entidad->obtenerPorId(Session::get("idCliente"));
+
+        $pedido = new Pedido();
+        $aPedido = $pedido->obtenerPorCliente(Session::get("idCliente"));
+        return view("web.mi-cuenta", compact('entidad', 'aPedido'));
     }
 
+    public function guardar (Request $request)
+    {
+            $entidad = new Cliente();
+            $entidad->nombre = $request->input('txtNombre');
+            $entidad->apellido = $request->input('txtApellido');
+            $entidad->telefono = $request->input('txtTelefono');
+            $entidad->correo = $request->input('txtCorreo');
+            $entidad->idcliente = Session::get("idCliente");
+            $entidad->actualizarMiCuenta();
+            $msg = "Actualizado correctamente.";
+            $idcliente = $entidad->idcliente;
 
+            $pedido = new Pedido();
+            $aPedido = $pedido->obtenerPorCliente($idcliente);
+
+        return view("web.mi-cuenta", compact('entidad', 'msg','aPedido'));
+    }
 }

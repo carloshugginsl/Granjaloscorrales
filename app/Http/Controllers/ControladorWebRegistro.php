@@ -17,8 +17,9 @@ class ControladorWebRegistro extends Controller
         $cliente = new Cliente();
         $cliente->nombre = $request->input("txtNombre");
         $cliente->apellido = $request->input("txtApellido");
-        $cliente->correo = $request->input("txtCorreo");
         $cliente->telefono = $request->input("txtTelefono");
+        $cliente->correo = $request->input("txtCorreo");
+        $cliente->domiclio = $request->input("txtDomicilio");
         $cliente->clave = $cliente->encriptarClave($request->input("txtClave"));
 
         $cliente->insertar();    
