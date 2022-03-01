@@ -8883,13 +8883,21 @@ h1, h2, h3, h4, h5,
   background: transparent;
   padding: 16px 20px; }
 
-.ftco-cart button, .ftco-cart .form-control {
+.ftco-cart .form-control {
   height: 54px !important;
   text-align: center;
   bordeR: 1px solid rgba(0, 0, 0, 0.05) !important;
-  color: #000000 !important;
+  color: black !important;
   padding: 0;
   font-size: 14px; }
+
+  .ftco-cart button {
+    height: 54px !important;
+    text-align: center;
+    bordeR: 1px solid rgba(0, 0, 0, 0.05) !important;
+    color: white !important;
+    padding: 0;
+    font-size: 14px; }
 
 .ftco-cart .form-group {
   position: relative; }
@@ -10065,4 +10073,7 @@ textarea.form-control {
 
     }
     
+    .msg{
+      color: red;
+    }
     

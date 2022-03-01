@@ -18,19 +18,20 @@
                         <form method="POST">
     			<div class="col-md-12 ftco-animate">
     				<div class="cart-list">
-				    <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
 	    				<table class="table">
 						    <thead class="thead-primary">
 						      <tr class="text-center">
-						        <th>&nbsp;</th>
-						        <th>&nbsp;</th>
+						        <th>Eliminar</th>
+						        <th>Imagen</th>
 						        <th>Producto</th>
-						        <th>Precio</th>
+						        <th>Precio Unitario</th>
 						        <th>Cantidad</th>
-						        <th>Total</th>
+							  <th>&nbsp;</th>
+
 						      </tr>
 						    </thead>
 						    <tbody>
+						    <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
 						    @foreach($aCarritos as $item)
 						      <tr class="text-center">
 						        <td class="product-remove"><a href="/carrito/eliminar/{{$item->idcarrito}}"><span class="ion-ios-trash"></span></a></td>
@@ -39,24 +40,20 @@
 						        
 						        <td class="product-name">
 						        	<h3>{{$item->nombre_producto}}</h3>
-						        	<p></p>
+						        	<p>{{$item->descripcion}}</p>
 						        </td>
 						        
-						        <td class="price">$4.90</td>
+						        <td class="price">${{$item->precio}}</td>
 						        
-						        <td class="quantity">
-						        	<div class="input-group mb-3">
-					             	<input type="text" name="quantity" class="quantity form-control input-number" value="{{$item->cantidad}}" min="1" max="100">
+						        <td class="quantity">{{$item->cantidad}}
 					          	</div>
 					          </td>
-						        
-						        <td class="total">$4.90</td>
-						      </tr><!-- END TR-->
+						    @endforeach
 
+						      </tr>
 						    </tbody>
 						  </table>
-						  @endforeach
-                                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="checkout.html" class="btn btn-primary">Seguir comprando</a></p>
+                                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/producto" class="btn btn-primary">Seguir comprando</a></p>
 
 					  </div>
     			</div>
@@ -67,9 +64,10 @@
                       <div class="cart-total mb-3">
     					<h3>Comentarios:</h3>
     					<p></p>
-  						<form action="#" class="info">
+  						<form class="info">
 	              <div class="form-group">
-	                <textarea name="" id="" cols="60" rows="20" type="text" class="form-control text-left px-3" placeholder=""></textarea>
+	                <textarea name="txtComentarios" id="txtComentarios" class="form-control" cols="60" rows="20" type="text" class="form-control text-left px-3" placeholder="Añade un comentario"></textarea>
+
 	              </div>
                     <div>
     				
@@ -86,17 +84,17 @@
     					<h3>Modalidad de pago:</h3>
     					<select name="lstPago" id="lstPago" class="form-control" required>
                                                 <option value disabled selected>Seleccionar</option>
-                                                <option value="1">Efectivo</option>
+                                                <option value="1"></option>Efectivo
                                                 <option value="2">Mercado Pago</option>
                                           </select>
     					
-    					<hr>
     					<p class="d-flex total-price">
     						<span>Total</span>
     						<span>${{$total}}</span>
     					</p>
+
     				</div>
-    				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="checkout.html" class="btn btn-primary py-3 px-4">Finalizar pedido</a></p>
+    				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" class="btn btn-primary py-3 px-4 centr">FINALIZAR PEDIDO</button>
     			</div>
     		</form>
 		</div>

@@ -12,25 +12,27 @@
         </div>
       </div>
     </div>
-
+    
     <section class="ftco-section">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-xl-7 ftco-animate">
+	    
 					<form method="POST" class="billing-form">
                 			<input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
 							<h3 class="mb-4 billing-heading">Datos Personales</h3>
+		
 	          	<div class="row align-items-end">
 	          		<div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="firstname">Nombre</label>
-	                  <input type="text" class="form-control" placeholder="{{$entidad->nombre}}">
+	                  <input type="text" class="form-control" name="txtNombre" value="{{$entidad->nombre}}">
 	                </div>
 	              </div>
 	              <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="lastname">Apellido</label>
-	                  <input type="text" class="form-control" placeholder="{{$entidad->apellido}}">
+	                  <input type="text" class="form-control" name="txtApellido" value="{{$entidad->apellido}}">
 	                </div>
                 </div>
                 <div class="w-100"></div>
@@ -38,7 +40,7 @@
 		            	<div class="form-group">
 		            		<label for="country">Dirección</label>
 		            		<div class="select-wrap">
-					<input type="text" class="form-control" placeholder="{{$entidad->domicilio}}">
+					<input type="text" name="txtDomicilio" class="form-control" value="{{$entidad->domicilio}}">
 		                  </select>
 		                </div>
 		            	</div>
@@ -47,13 +49,13 @@
 		            <div class="col-md-6">
 		            	<div class="form-group">
 	                	<label for="streetaddress">Teléfono</label>
-	                  <input type="text" class="form-control" placeholder="{{$entidad->telefono}}">
+	                  <input type="text" name="txtTelefono" class="form-control" value="{{$entidad->telefono}}">
 	                </div>
 		            </div>
 		            <div class="col-md-6">
 		            	<div class="form-group">
 					<label for="streetaddress">Correo eléctronico</label>
-	                  <input type="text" class="form-control" placeholder="{{$entidad->correo}}">
+	                  <input type="email" name="txtCorreo" class="form-control" value="{{$entidad->correo}}">
 	                </div>
 		            </div>
 				*Para nosotros es importante que verifiques tus datos personales, no olvides corregirlos y/o actualizarlos en caso de ser necesario. 
@@ -63,8 +65,7 @@
 		            <div class="col-md-6">
 		            	<div class="form-group">
 	                </div>
-			    <p><button type="submit" class="btn btn-primary py-3 px-4">Actualizar datos</a></p>
-			    
+			    <button type="submit" class="btn btn-primary py-3 px-4">Actualizar datos</button>			    
 		            </div>
 				</form>
 
@@ -91,23 +92,34 @@
 	          		<div class="cart-detail cart-total p-3 p-md-4">
 				    
 	          			<h3 class="billing-heading mb-4">Pedido Actual</h3>
-	          			<p class="d-flex">
+	          			   <p class="d-flex">
+					    <span>Número de pedido:</span>
+					    </p>
+					    <p class="d-flex">
+					    <span>Fecha:</span>
+					    </p>
+					    <p class="d-flex">
+					    <span>Estado del Pedido:</span>					   
+						</p>
+						<p class="d-flex">
+					    <span>Total:</span>					   
+						</p>
+
+
+
 					    @if(!empty($aPedido))
                                       @foreach($aPedido as $item)
-		    						<span>Número de pedido</span>
+						  <p>
 		    						<span>{{$item->idpedido}}</span>
 		    					</p>
 		    					<p class="d-flex">
-		    						<span>Fecha</span>
 		    						<span>{{$item->fecha}}</span>
 		    					</p>
 		    					<p class="d-flex">
-		    						<span>Estado del Pedido</span>
 		    						<span>{{$item->estado}}</span>
 		    					</p>
 		    					<hr>
 		    					<p class="d-flex total-price">
-		    						<span>Total</span>
 		    						<span>${{$item->total}}</span>
 		    					</p>
 							    @endforeach

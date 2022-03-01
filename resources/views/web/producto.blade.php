@@ -43,10 +43,11 @@
 	    					</div>
 	    					<div class="bottom-area d-flex px-3">
 	    						<div class="m-auto d-flex">
-	    							<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+	    							<a  class="buy-now d-flex justify-content-center align-items-center mx-1">
 								    <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
                                			    <input value="{{$item->idproducto}}" name="txtIdProducto" type="hidden"></input>
-	    							    <span><i class="ion-ios-cart"></i></span>
+								    <input type="number" name="txtCantidad" placeholder="CANTIDAD" class="txtCantidad" width="40"></input>
+                                			    <button type="submit">AGREGAR</button>
 	    							</a>
     							</div>
     						</div>

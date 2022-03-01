@@ -28,6 +28,7 @@ class ControladorWebMiCuenta extends Controller
             $entidad->apellido = $request->input('txtApellido');
             $entidad->telefono = $request->input('txtTelefono');
             $entidad->correo = $request->input('txtCorreo');
+            $entidad->domicilio = $request->input('txtDomicilio');
             $entidad->idcliente = Session::get("idCliente");
             $entidad->actualizarMiCuenta();
             $msg = "Actualizado correctamente.";

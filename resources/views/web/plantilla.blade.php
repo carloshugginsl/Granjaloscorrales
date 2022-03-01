@@ -76,7 +76,6 @@
             @endif
 
 	          <li class="nav-item cta cta-colored"><a href="/carrito" class="nav-link"><span class="icon-shopping_cart"></span></a></li>
-
 	        </ul>
 	      </div>
 	    </div>

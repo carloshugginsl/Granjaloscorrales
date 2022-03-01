@@ -26,7 +26,7 @@ class ControladorWebLogin extends Controller
             Session::put("idCliente", $usuarioLogin->idcliente);
             $producto = new Producto();
             $aProductos = $producto->obtenerTodos();
-            return view('web.takeaway' , compact('aProductos'));
+            return view('web.producto' , compact('aProductos'));
         
         } else {
             $msg = "Usuario o clave incorrecta";

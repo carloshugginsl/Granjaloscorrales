@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Entidades\Pedido_detalle;
 use App\Entidades\Promocion;
 use App\Entidades\Sistema\Patente;
 use App\Entidades\Sistema\Usuario;
 use Session;
+
 
 class ControladorWebHome extends Controller
 {
@@ -13,8 +15,7 @@ class ControladorWebHome extends Controller
     {
             $promocion = new Promocion();
             $array_promociones = $promocion->obtenerTodos();
-
-
+            
             return view("web.home", compact('array_promociones'));
     }
 
