@@ -28,6 +28,7 @@ if (isset($msg)) {
                   <th>Fecha</th>
                   <th>Cliente</th>
                   <th>Estado</th>
+                  <th>Metodo</th>
                   <th>Total</th>
                   
             </tr>

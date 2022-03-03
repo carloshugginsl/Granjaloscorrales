@@ -21,10 +21,11 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     Route::post('/nosotros', 'ControladorWebNosotros@guardar');
     Route::get('/nosotrosok', 'ControladorWebNosotrosOk@index');
     Route::get('/producto', 'ControladorWebProducto@index');
-    Route::get('/producto-detalle/{id}', 'ControladorWebProducto@detalle');
+    Route::get('/producto-detalle2/{id}', 'ControladorWebProducto@detalle2');
     Route::get('/promocion-detalle/{id}', 'ControladorWebPromocion@detalle');
     Route::post('/producto', 'ControladorWebProducto@insertarCarrito');
     Route::get('/producto-solo', 'ControladorWebProductoSolo@index');
+    Route::get('/producto-solo', 'ControladorWebProductoSolo@insertarCarrito');
     Route::get('/promocion-solo', 'ControladorWebPromocion@index');
     Route::get('/contacto', 'ControladorWebContacto@index');
     Route::post('/contacto', 'ControladorWebContacto@enviar');

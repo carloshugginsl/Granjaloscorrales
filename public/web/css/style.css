@@ -10076,4 +10076,26 @@ textarea.form-control {
     .msg{
       color: red;
     }
+
+   .rate-box input{
+      border-radius: 0;
+      box-shadow: none;
+      font-size: 14px;
+      border-color: #625b4b;
+      border-radius: 05px;
+      width: 100px;
+    }
+
+    .car-button{
+      color: white;
+      width: 40px;
+      background-color: black;
+
+    }
+
+    p.price span.price-sale {
+      color: red;
+      font-weight: bold;
+    }
+
     

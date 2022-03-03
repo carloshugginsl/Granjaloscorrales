@@ -48,6 +48,19 @@ if (isset($msg)) {
                   <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
                   <input type="hidden" id="id" name="id" class="form-control" value="{{$globalId}}" required>
                   <div class="form-group col-lg-6">
+                        <label for="lstMetodo">Metodo:</label>
+                        <select name="lstMetodo" id="lstMetodo" class="form-control">
+                              <option value disabled selected>Seleccionar</option>
+                              @foreach($array_metodos as $item)
+                                    @if($pedido->fk_idmetodo == $item->idmetodo)
+                                          <option selected value="{{ $item->idmetodo }}">{{ $item->nombre }}</option>
+                                    @else
+                                          <option value="{{ $item->idmetodo }}">{{ $item->nombre }}</option>
+                                    @endif
+                              @endforeach
+                        </select>
+                  </div>
+                  <div class="form-group col-lg-6">
                         <label for="lstCliente">Cliente:</label>
                         <select name="lstCliente" id="lstCliente" class="form-control">
                               <option value disabled selected>Seleccionar</option>
@@ -124,7 +137,6 @@ if (isset($msg)) {
                                     <tr>
                                           <th>Imagen</th>
                                           <th>Cantidad</th>
-                                          <th>Unidad de medidad</th>
                                           <th>Subtotal</th>
                                           <th>Nombre de Producto</th>
                                           <th>Descripción</th>
@@ -134,11 +146,12 @@ if (isset($msg)) {
                                     @if(!empty($detalle_pedido))
                                           @foreach($detalle_pedido as $item)
                                                 <tr>
-                                                      <td>{{$item->imagen}}</td>
+                                                      <td><img src='/files/{{$item->imagen}}' class="menu-img" alt="" height="100"></td>
                                                       <td>{{$item->cantidad}}</td>
                                                       <td>{{$item->subtotal}}</td>
                                                       <td>{{$item->nombre_producto}}</td>
                                                       <td>{{$item->descripcion}}</td>
+                                                      
                                                 </tr>
                                           </div> 
                                           @endforeach

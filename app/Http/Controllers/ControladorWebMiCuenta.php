@@ -38,5 +38,7 @@ class ControladorWebMiCuenta extends Controller
             $aPedido = $pedido->obtenerPorCliente($idcliente);
 
         return view("web.mi-cuenta", compact('entidad', 'msg','aPedido'));
+
+        
     }
 }

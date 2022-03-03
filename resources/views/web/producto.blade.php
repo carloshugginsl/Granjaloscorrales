@@ -31,7 +31,7 @@
 
     				<div class="product">
 
-    					<a href="{{ url('/producto-detalle/'. $item->idproducto)}}" class="img-prod"><img class="img-fluid" src="{{url('/files/'.$item->imagen)}}" alt="Colorlib Template">
+    					<a href="{{ url('/producto-detalle2/'. $item->idproducto)}}" class="img-prod"><img class="img-fluid" src="{{url('/files/'.$item->imagen)}}" alt="Colorlib Template">
     						<div class="overlay"></div>
     					</a>
     					<div class="text py-3 pb-4 px-3 text-center">
@@ -41,17 +41,28 @@
 		    						<p class="price"><span class="price-sale">${{$item->precio}}</span><span class="mr-2 price-dc">&nbsp;x&nbsp;{{$item->unidad}}</span></p>
 		    					</div>
 	    					</div>
-	    					<div class="bottom-area d-flex px-3">
+						    <div class="rate-box">
+						    <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
+                               			    <input value="{{$item->idproducto}}" name="txtIdProducto" type="hidden"></input>
+								    <input type="number" name="txtCantidad" class="txtCantidad" width="40" placeholder="Cantidad"></input>
+                                			    <button class="car-button" type="submit"><span class="icon-shopping_cart"></span></button>
+
+</div>
+						   
+					<div class="rate-box">
+						<div class="bottom-area d-flex px-3">
 	    						<div class="m-auto d-flex">
 	    							<a  class="buy-now d-flex justify-content-center align-items-center mx-1">
 								    <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
                                			    <input value="{{$item->idproducto}}" name="txtIdProducto" type="hidden"></input>
-								    <input type="number" name="txtCantidad" placeholder="CANTIDAD" class="txtCantidad" width="40"></input>
-                                			    <button type="submit">AGREGAR</button>
+								    <input type="number" name="txtCantidad" class="txtCantidad" width="40"></input>
+                                			    <button class="car-button"  type="submit"><span class="icon-shopping_cart"></span></button>
 	    							</a>
     							</div>
     						</div>
-    					</div>
+					</div>
+    					
+				</div>
 
     				</form>
             </div>

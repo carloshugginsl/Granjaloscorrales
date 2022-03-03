@@ -100,7 +100,7 @@ class Producto extends Model
        return $lstRetorno;
     }
 
-    public function obtenerProductoId($id){
+    public function obtenerProductoId2($id){
         $sql = "SELECT
                  idproducto,
                  nombre, 

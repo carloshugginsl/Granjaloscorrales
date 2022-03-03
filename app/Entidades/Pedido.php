@@ -11,7 +11,7 @@ class Pedido extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'idpedido', 'fk_idcliente', 'fk_idestado', 'total', 'comentario', 'fecha', 'producto'
+        'idpedido', 'fk_idmetodo', 'fk_idcliente', 'fk_idestado', 'total', 'comentario', 'fecha', 'producto'
     ];
 
     protected $hidden = [
@@ -20,6 +20,7 @@ class Pedido extends Model
 
     public function cargarDesdeRequest($request){
     $this->idpedido = $request->input('id') != "0" ? $request->input('id') : $this->idpedido;
+    $this->fk_idmetodo = $request->input('lstMetodo');
     $this->fk_idcliente = $request->input('lstCliente');
     $this->fk_idestado = $request->input('lstEstado');
     $this->total = $request->input('txtTotal');
@@ -31,13 +32,15 @@ class Pedido extends Model
     
     public function insertar(){
         $sql = "INSERT INTO pedidos (
+                fk_idmetodo,
                 fk_idcliente,
                 fk_idestado,
                 total, 
                 comentario,
                 fecha
-            ) VALUES (?, ?, ?, ?, ?);";
+            ) VALUES (?, ?, ?, ?, ?, ?);";
         $result = DB::insert($sql, [
+            $this->fk_idmetodo,
             $this->fk_idcliente,
             $this->fk_idestado,
             $this->total,
@@ -50,6 +53,7 @@ class Pedido extends Model
 
     public function actualizar() {
       $sql = "UPDATE pedidos SET
+            fk_idmetodo=$this->fk_idmetodo,
             fk_idcliente= $this->fk_idcliente,
             fk_idestado= $this->fk_idestado,
             total= $this->total,
@@ -68,6 +72,7 @@ class Pedido extends Model
    public function obtenerPorId($idpedido){
        $sql = "SELECT
                 idpedido,
+                fk_idmetodo,
                 fk_idcliente,
                 fk_idestado,
                 total, 
@@ -79,6 +84,7 @@ class Pedido extends Model
 
        if (count($lstRetorno) > 0) {
            $this->idpedido= $lstRetorno[0]->idpedido;
+           $this->fk_idmetodo= $lstRetorno[0]->fk_idmetodo;
            $this->fk_idcliente= $lstRetorno[0]->fk_idcliente;
            $this->fk_idestado= $lstRetorno[0]->fk_idestado;
            $this->total= $lstRetorno[0]->total;
@@ -92,6 +98,7 @@ class Pedido extends Model
    public function obtenerTodos(){
        $sql = "SELECT
                 idpedido,
+                fk_idmetodo,
                 fk_idcliente,
                 fk_idestado,
                 total, 
@@ -108,19 +115,23 @@ class Pedido extends Model
         0 => 'A.fecha',
         1 => 'B.nombre',
         2 => 'C.nombre',
-        3 => 'A.total',
+        3 => 'D.nombre',
+        4 => 'A.total',
     );
     $sql = "SELECT DISTINCT
                 A.idpedido,
                 A.fk_idcliente,
-                B.nombre as cliente, 
+                B.nombre as cliente,
+                A.fk_idmetodo,
+                C.nombre as metodo,
                 A.fk_idestado,
-                C.nombre as estado,
+                D.nombre as estado,
                 A.total,
                 A.fecha
             FROM pedidos A
             INNER JOIN clientes B ON A.fk_idcliente = B.idcliente
-            INNER JOIN estados c ON A.fk_idestado = C.idestado
+            INNER JOIN metodos C ON A.fk_idmetodo = C.idmetodo
+            INNER JOIN estados D ON A.fk_idestado = D.idestado
             WHERE 1=1";
 
 
@@ -128,6 +139,7 @@ class Pedido extends Model
     if (!empty($request['search']['value'])) {
         $sql .= " AND ( B.nombre LIKE '%" . $request['search']['value'] . "%' ";
         $sql .= " OR C.nombre LIKE '%" . $request['search']['value'] . "%' ";
+        $sql .= " OR D.nombre LIKE '%" . $request['search']['value'] . "%' )";
 
     }
     $sql .= " ORDER BY " . $columns[$request['order'][0]['column']] . "   " . $request['order'][0]['dir'];
@@ -144,10 +156,12 @@ class Pedido extends Model
         $sql = "SELECT DISTINCT
                 A.idpedido,
                 A.fecha,
+                B.nombre as metodo,
                 A.total,
-                B.nombre as estado
+                C.nombre as estado
             FROM pedidos A
-            INNER JOIN estados B ON A.fk_idestado = B.idestado
+            INNER JOIN metodos B ON A.fk_idmetodo = B.idmetodo
+            INNER JOIN estados C ON A.fk_idestado = C.idestado
             WHERE A.fk_idcliente = $idCliente AND A.fk_idestado != '3' AND A.fk_idestado != '4'";
 
         $lstRetorno = DB::select($sql);

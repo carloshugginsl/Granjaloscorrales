@@ -37,10 +37,10 @@ class ControladorWebProducto extends Controller
 
     }
 
-    public function detalle($id)
+    public function detalle2($id)
     {     
         $producto = new Producto();
-        $aProductos = $producto->obtenerProductoId($id);
+        $aProductos = $producto->obtenerProductoId2($id);
         
         return view('web.producto-solo' , compact('aProductos'));
         

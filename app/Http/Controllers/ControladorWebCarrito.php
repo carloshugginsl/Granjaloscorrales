@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Entidades\Carrito;
-use App\Entidades\Sucursal;
+use App\Entidades\Metodo;
 use App\Entidades\Pedido;
 use App\Entidades\Pedido_detalle;
 use Illuminate\Routing\Controller;
@@ -23,10 +23,13 @@ class ControladorWebCarrito extends Controller
             $aCarritos = $carrito->ObtenerPorCliente(Session::get("idCliente"));
             $total = 0;
 
+            $metodo = new Metodo();
+            $aMetodos = $metodo->obtenerTodos();
+
             foreach($aCarritos as $item){ 
                 $total += $item->precio * $item->cantidad;
             }
-            return view('web.carrito', compact('aCarritos', 'total'));
+            return view('web.carrito', compact('aCarritos', 'total', 'aMetodos'));
         }   else {
             return redirect("login");
         }
@@ -54,10 +57,12 @@ class ControladorWebCarrito extends Controller
      }
 
     public function finalizarPedido(Request $request){
+        $metodo = $request ->input("lstMetodo");
         $modalidadPago = $request->input('lstPago');
         $comentario = $request->input("txtComentarios");
 
         $pedido = new Pedido();
+        $pedido->fk_idmetodo = $metodo;
         $pedido->fk_idcliente = Session::get("idCliente");
         $pedido->fk_idestado = 1;
         $pedido->comentario = $comentario;
@@ -86,6 +91,7 @@ class ControladorWebCarrito extends Controller
             $pedidoDetalle->insertar();
 
         }
+        
         $carrito->vaciarPorCliente(Session::get("idCliente"));
 
         if($modalidadPago == 2){
@@ -97,7 +103,7 @@ class ControladorWebCarrito extends Controller
 
             $item = new Item();
             $item->id= "1234";
-            $item->title = "Granjaloscorrales";
+            $item->title = "Burgers SRL";
             $item->category_id  = "products";
             $item->quantity = 1;
             $item->unit_price = $total;

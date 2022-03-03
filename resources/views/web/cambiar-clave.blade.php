@@ -23,14 +23,14 @@
 	          		<div class="col-md-12">
 	                <div class="form-group">
 	                	<label for="firstname">Clave actual</label>
-	                  <input type="text" class="form-control" placeholder="Ingrese su clave">
+	                  <input type="password" class="form-control" placeholder="Ingrese su clave">
 	                </div>
                   <div class="form-group">
 	                	<label for="firstname">Clave nueva</label>
-	                  <input type="text" class="form-control" placeholder="Ingrese su nueva clave">
+	                  <input type="password" class="form-control" placeholder="Ingrese su nueva clave">
 	                </div><div class="form-group">
 	                	<label for="firstname">Confirmar nueva clave</label>
-	                  <input type="text" class="form-control" placeholder="Confirme la nueva clave">
+	                  <input type="password" name="txtClave" class="form-control" placeholder="Confirme la nueva clave">
 	                </div>
 	              </div>
 	              

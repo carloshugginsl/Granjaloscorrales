@@ -40,15 +40,14 @@
 						        
 						        <td class="product-name">
 						        	<h3>{{$item->nombre_producto}}</h3>
-						        	<p>{{$item->descripcion}}</p>
+						        	<p></p>
 						        </td>
 						        
-						        <td class="price">${{$item->precio}}</td>
+						        <td class="price"></td>
 						        
-						        <td class="quantity">{{$item->cantidad}}
-					          	</div>
-					          </td>
-						    @endforeach
+						        <td class="quantity">{{$item->cantidad}}</td>
+					         
+							  @endforeach
 
 						      </tr>
 						    </tbody>
@@ -64,7 +63,6 @@
                       <div class="cart-total mb-3">
     					<h3>Comentarios:</h3>
     					<p></p>
-  						<form class="info">
 	              <div class="form-group">
 	                <textarea name="txtComentarios" id="txtComentarios" class="form-control" cols="60" rows="20" type="text" class="form-control text-left px-3" placeholder="Añade un comentario"></textarea>
 
@@ -76,17 +74,24 @@
     				
                         <p></p>
                     </div>
-	            </form>
     				</div>
     			</div>
     			<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
     				<div class="cart-total mb-3">
+				    <h3>Meto:</h3>
+				    <select name="lstMetodo" id="lstMetodo" class="form-control" required>
+                                                <option value disabled selected>Seleccionar</option>
+                                                @foreach($aMetodos as $metodo)
+                                                      <option value="{{$metodo->idmetodo}}">{{$metodo->nombre}}</option>
+                                                @endforeach
+                                                
+                                          </select>
     					<h3>Modalidad de pago:</h3>
     					<select name="lstPago" id="lstPago" class="form-control" required>
                                                 <option value disabled selected>Seleccionar</option>
-                                                <option value="1"></option>Efectivo
+                                                <option value="1">Efectivo</option>
                                                 <option value="2">Mercado Pago</option>
-                                          </select>
+                              </select>
     					
     					<p class="d-flex total-price">
     						<span>Total</span>

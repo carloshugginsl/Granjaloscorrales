@@ -17,7 +17,6 @@ class Carrito extends Model
     protected $hidden = [
 
     ];
-
     
     public function insertar(){
         $sql = "INSERT INTO carrito (
@@ -103,8 +102,5 @@ class Carrito extends Model
        $lstRetorno = DB::select($sql);
        return $lstRetorno;
    }
-
-   
-
 
 }

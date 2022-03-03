@@ -58,7 +58,13 @@
 	                  <input type="email" name="txtCorreo" class="form-control" value="{{$entidad->correo}}">
 	                </div>
 		            </div>
-				*Para nosotros es importante que verifiques tus datos personales, no olvides corregirlos y/o actualizarlos en caso de ser necesario. 
+				<div class="col-md-6">
+		            	<div class="form-group">
+					<label for="streetaddress">Cargá comprobante acá*</label>
+					<input type="file" name="adjunto" id="adjunto" accept=".pdf, .doc, .docx, .png, .jpg, .jpeg"  require>
+	                </div>
+		            </div>
+				<p class="price"><span class="price-sale">*No olvides cargar tu comprobante de pago, si tú pedido lo hiciste a través de medios electrónicos.</span> <br></p>
 
 
 		            <div class="w-100"></div>
@@ -90,40 +96,40 @@
 	          <div class="row mt-5 pt-3">
 	          	<div class="col-md-12 d-flex mb-5">
 	          		<div class="cart-detail cart-total p-3 p-md-4">
-				    
-	          			<h3 class="billing-heading mb-4">Pedido Actual</h3>
-	          			   <p class="d-flex">
-					    <span>Número de pedido:</span>
-					    </p>
-					    <p class="d-flex">
-					    <span>Fecha:</span>
-					    </p>
-					    <p class="d-flex">
-					    <span>Estado del Pedido:</span>					   
-						</p>
-						<p class="d-flex">
-					    <span>Total:</span>					   
-						</p>
-
-
-
-					    @if(!empty($aPedido))
+				    @if(!empty($aPedido))
                                       @foreach($aPedido as $item)
-						  <p>
-		    						<span>{{$item->idpedido}}</span>
+	          			<h3 class="billing-heading mb-4">Pedido Actual</h3>
+	          			   <p class="d-flex">Número de pedido: 
+					    <span>&nbsp;{{$item->idpedido}}</span>
+					    </p>
+					    <p class="d-flex">Fecha:
+					    <span>&nbsp;{{$item->fecha}}</span>
+					    </p>
+					    <p class="d-flex">Estado del Pedido:
+					    <span>&nbsp;{{$item->estado}}</span>					   
+						</p>
+						<p class="d-flex">Total:
+					    <span>&nbsp;${{$item->total}}</span>					   
+						</p>
+						@endforeach
+                                    @endif
+
+
+
+					    
+						  <p class="d-flex">
 		    					</p>
 		    					<p class="d-flex">
-		    						<span>{{$item->fecha}}</span>
+		    						
 		    					</p>
 		    					<p class="d-flex">
-		    						<span>{{$item->estado}}</span>
+		    						
 		    					</p>
 		    					<hr>
 		    					<p class="d-flex total-price">
-		    						<span>${{$item->total}}</span>
+		    						
 		    					</p>
-							    @endforeach
-                                    @endif
+							    
 								</div>
 	          	</div>
 	         

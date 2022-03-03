@@ -117,14 +117,22 @@
 		    						<p class="price"><span class="price-sale">${{$item->precio}}</span></p>
 		    					</div>
 	    					</div>
-	    					<div class="bottom-area d-flex px-3">
+						<form action="" method="POST">
+
+	    					<div class="rate-box">
+						<div class="bottom-area d-flex px-3">
 	    						<div class="m-auto d-flex">
-	    							<a href="" class="buy-now d-flex justify-content-center align-items-center mx-1">
-	    								<span><i class="ion-ios-cart"></i></span>
+	    							<a  class="buy-now d-flex justify-content-center align-items-center mx-1">
+								    <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
+                               			    <input value="{{$item->idpromocion}}" name="txtIdPromocion" type="hidden"></input>
+								    <input type="number" name="txtCantidad" class="txtCantidad" width="40"></input>
+                                			    <button class="car-button"  type="submit"><span class="icon-shopping_cart"></span></button>
 	    							</a>
-	    							
     							</div>
     						</div>
+					</div>
+					</form>
+
     				</div>
     			   </div>
 			</div>

@@ -61,7 +61,7 @@ class ControladorProducto extends Controller{
                 $archivo = $_FILES["imagen"]["tmp_name"];
                 $extension = pathinfo($_FILES["imagen"]["name"], PATHINFO_EXTENSION);
 
-                if($extension == "png" || $extension == "jpg" || $extension == "jgpeg"){
+                if($extension == "png" || $extension == "jpg" || $extension == "jpeg"){
                     move_uploaded_file($archivo, env('APP_PATH') . "/public/files/$nombre.$extension"); //guardaelarchivo
                     $producto->imagen = "$nombre.$extension";
                 } else{ 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use App\Entidades\Pedido;
+use App\Entidades\Metodo;
 use App\Entidades\Cliente;
 use App\Entidades\Estado;
 use App\Entidades\Producto;
@@ -45,7 +46,9 @@ class ControladorPedido extends Controller{
                     $pedido = new Pedido();
             
                 /* CAMBIOS PARA EL DESPLEGABLE */
-        
+            $metodo = new Metodo();
+            $array_metodos = $metodo->obtenerTodos();
+            
             $cliente = new Cliente();
             $array_clientes = $cliente->obtenerTodos();
 
@@ -56,7 +59,7 @@ class ControladorPedido extends Controller{
             $array_productos = $producto->obtenerTodos();
 
 
-           return view("pedido.pedido-nuevo", compact('titulo', 'array_clientes', 'array_estados', 'array_productos','pedido'));
+           return view("pedido.pedido-nuevo", compact('titulo','array_metodos', 'array_clientes', 'array_estados', 'array_productos','pedido'));
                 } 
 
             } else {
@@ -74,7 +77,7 @@ class ControladorPedido extends Controller{
                 $pedido->cargarDesdeRequest($request);
                 
                 //validaciones
-                if ($pedido->fk_idcliente == "" || $pedido->fk_idestado =="" ) {
+                if ($pedido->fk_idcliente == "" || $pedido->fk_idmetodo == "" || $pedido->fk_idestado =="" ) {
                     $msg["ESTADO"] = MSG_ERROR;
                     $msg["MSG"] = "Complete todos los datos";
                 } else {
@@ -98,14 +101,16 @@ class ControladorPedido extends Controller{
                 $msg["ESTADO"] = MSG_ERROR;
                 $msg["MSG"] = ERRORINSERT;
             }
-           
+            $metodo = new Metodo();
+            $array_metodos = $metodo->obtenerTodos();
+            
             $cliente = new Cliente();
             $array_clientes = $cliente->obtenerTodos();
 
             $estado = new Estado();
             $array_estados = $estado->obtenerTodos();
 
-            return view('pedido.pedido-nuevo', compact('msg', 'pedido', 'titulo','array_clientes','array_estados')) . '?id=' . $pedido->idpedido; 
+            return view('pedido.pedido-nuevo', compact('msg', 'pedido', 'titulo','array_metodos','array_clientes','array_estados')) . '?id=' . $pedido->idpedido; 
     
         }
         
@@ -129,6 +134,8 @@ class ControladorPedido extends Controller{
                 $row[] = $aPedidos[$i]->fecha;
                 $row[] = $aPedidos[$i]->cliente;
                 $row[] = $aPedidos[$i]->estado;
+                $row[] = $aPedidos[$i]->metodo;
+
                 //$row[] = $aPedidos[$i]->comentario;
                 $row[] = "$". number_format($aPedidos[$i]->total, 2, ", ", ".");
                 $cont++;
@@ -159,6 +166,8 @@ class ControladorPedido extends Controller{
                     //$detalle_pedido = new Pedido_detalle();
                     $detalle_pedido= Pedido_detalle::obtenerPorIdPedido($id);
 
+                    $metodo = new Metodo();
+                    $array_metodos = $metodo->obtenerTodos();
                     
                     $cliente = new Cliente();
                     $array_clientes = $cliente->obtenerTodos();
@@ -168,7 +177,7 @@ class ControladorPedido extends Controller{
                     
 
 
-                    return view("pedido.pedido-nuevo", compact('pedido', 'titulo', 'array_clientes', 'array_estados', 'detalle_pedido'));   
+                    return view("pedido.pedido-nuevo", compact('pedido', 'titulo', 'array_metodos', 'array_clientes', 'array_estados', 'detalle_pedido'));   
 
                 }
             } else {
